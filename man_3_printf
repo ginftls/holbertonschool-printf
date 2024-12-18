@@ -1,0 +1,66 @@
+.TH _PRINTF 3 "November 2024" "Custom Library" "_PRINTF MANUAL"
+.SH NAME
+_printf \- custom implementation of the printf function
+.SH SYNOPSIS
+.nf
+.B #include "main.h"
+.B int _printf(const char *format, ...);
+.B int _putchar(char c);
+.B int _print_int(int n);
+.fi
+.SH DESCRIPTION
+.B _printf
+is a custom implementation of the standard library function
+.B printf().
+It formats and prints data to the standard output based on a given format string.
+.PP
+The
+.B format
+string contains plain text and format specifiers, which determine how subsequent arguments (provided via variadic arguments) are formatted and output. Each format specifier begins with a '%' character.
+.SH FUNCTION DESCRIPTIONS
+	.TP
+.B _putchar(char c)
+	Writes a single character to the standard output.
+	.TP
+.B _print_int(int n)
+	Prints a signed integer to the standard output.
+	.SH FORMAT SPECIFIERS
+	The following format specifiers are supported by
+	.B _printf:
+	.TP
+	.B %c
+	Prints a single character.
+	.TP
+	.B %s
+	Prints a string of characters.
+	.TP
+	.B %d
+	Prints a signed decimal integer.
+	.TP
+	.B %i
+	Prints a signed integer in base 10.
+	.TP
+	.B %%
+	Prints a literal '%' character.
+	.SH RETURN VALUE
+	.B _printf
+	returns the total number of characters printed (excluding the null byte used to end output to strings). If an error occurs, the function returns
+	.B \-1.
+	.SH BUGS
+	Unknown format specifiers are printed as is, prefixed with '%'.
+	.SH EXAMPLES
+	.nf
+	.B #include "main.h"
+.B int main(void)
+	.B {
+		.B     _printf("Character: [%c]\\n", 'H');
+		.B     _printf("String: [%s]\\n", "Hello, World!");
+		.B     _printf("Integer: [%d]\\n", 12345);
+		.B     _printf("Percent: [%%%%]\\n");
+		.B     return (0);
+		.B }
+		.fi
+	.SH AUTHOR
+Written by Giovanni Farias (ginftls)
+	.SH SEE ALSO
+.BR printf (3)
